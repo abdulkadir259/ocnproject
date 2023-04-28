@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bhikaari</title>
+  </head>
+  <body>
+    <div>
+      <h3>Exp 6</h3>
+      <p>
+        %components chosen for optical fiber link of overall length of 10km and
+        <br />
+        %operating at 20Mbps 1. LED capable of launching an average power if
+        0.1mW <br />
+        %at 0.85um diameter of core is 50um with graded index fiber, 2. fiber
+        <br />
+        %attenuation 2.5db/km, 3. requires splicing every 2Km with loss of 0.3db
+        per <br />
+        %splice. there is connection loss at the receiver of 1.5db, 4. the
+        receiver <br />
+        %requires mean incidenat optical power of -46dbm, 5. predicted safety
+        <br />
+        %margin of 6db. determine system is viable or not viable. <br />
+
+        clc; <br />
+        close all; <br />
+        clear; <br />
+        Len = input('Enter the length of the Link'); %length of fiber <br />
+        Pa = input('Enter the Average Power'); %Ps in watt <br />
+        LF = input('Enter the Fiber attenuation'); % fiber attenuation per km
+        <br />
+        n = input('Enter the distance between 2 splices'); % splices distance
+        <br />
+        spl = input('Enter the splice loss in system'); %loss per km <br />
+        Lcn =input('Enter the connector loss'); <br />
+        Pr = input('Enter the mean incident power'); %pr receiver sensitivity
+        <br />
+        SM = input('Enter the Safety Margin'); %safety margin or system margin
+        <br />
+        Ps= 10*log10(Pa/1); <br />
+        disp('Average power in dBm is') <br />
+        disp(Ps) <br />
+        Pt = Ps - Pr; <br />
+        disp('allowed loss is'); <br />
+        disp(Pt); <br />
+        Lc = LF*Len; <br />
+        disp('Cable loss is'); <br />
+        disp(Lc); <br />
+        S = (Len/n)-1; <br />
+        disp('number of splices required are'); <br />
+        disp(S); <br />
+        Ls = S*spl; <br />
+        disp('splice loss is'); <br />
+        disp(Ls); <br />
+        TL = Lc+Ls+(2*Lcn)+SM; <br />
+        disp('Total Loss is:'); <br />
+        disp(TL); <br />
+        if TL< Pt <br />
+        disp('This Budget is Viable'); <br />
+        else <br />
+        disp('This budget is not viable') <br />
+        end <br />
+      </p>
+    </div>
+    <div>
+      <h3>Exp 7a</h3>
+      <p>
+        clc; <br />
+        close all; <br />
+        clear; <br />
+        v = input ('enter v number = '); %given in the problem <br />
+        lambda = input ('wavelengh of light = '); %enter wavelenght of light
+        <br />
+        n1 = input ('refractive index of medium 1/ core = '); %enter n1 <br />
+        n2 = input ('refractive index of medium 1/ cladding = '); %enter n2
+        <br />
+        <br />
+        NA = (((n1^2) - (n2^2))^0.5); %formaule for NA using RI <br /><br />
+        disp('Numerical aperture is ');<br />
+        <br />
+        disp(NA);<br />
+        <br />
+        a = (v*lambda)/(2*pi*NA); %calculate radius of optical fiber <br />
+        disp('radius of optical fiber is ') <br />
+        disp(a) <br />
+        criticalagnle = asin(n2/n1); %calculate critical angle <br />
+        disp ('criticalagnle is'); <br />
+        disp(criticalagnle); <br />
+        acceptanceangle = sin(NA); %calculate acceptance angle <br />
+        disp('accepatnaceangle is'); <br />
+        disp(acceptanceangle); <br />
+      </p>
+    </div>
+
+    <div>
+      <h3>Exp 7b</h3>
+      <p>
+        clc; <br />
+        close all; <br />
+        clear;<br />
+        a =input('Enter the core radius='); <br />
+        lambda = input('Enter wavelength='); <br />
+        n1 = input('Enter the Refractive index of core='); <br />
+        n2 = input('Enter the Refractive index of cladding='); <br />
+        alpha = input('Enter index profile:'); <br />
+        NA = ((((n1^2)-(n2^2)))^(0.5)); <br />
+        disp('Numerical aperture is:') <br />
+        disp(NA) <br />
+        V = (2*pi*a*NA)/lambda; <br />
+        disp('V number is:'); <br />
+        disp(V) <br />
+        M= (alpha/(alpha+2))*((V^2)/2); <br />
+        disp('Number of modes are:'); <br />
+        disp(M) <br />
+      </p>
+    </div>
+  </body>
+</html>
